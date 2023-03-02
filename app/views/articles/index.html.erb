@@ -1,14 +1,96 @@
+<style>
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: #D79260;
+  color: white;
+  padding: 10px;
+}
+
+.navbar-logo {
+  font-size: 24px;
+  font-weight: bold;
+}
+
+.navbar-links {
+  display: flex;
+}
+
+.navbar-link {
+  margin-left: 10px;
+  color: white;
+  text-decoration: none;
+}
+
+.image-container {
+  position: relative;
+  display: inline-block;
+  margin-top: 20px;
+}
+
+.image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.text-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  color: white;
+  font-weight: bold;
+  font-size: 24px;
+  z-index: 2;
+}
+
+#articles {
+  margin-top: 20px;
+}
+</style>
+</head>
+<body>
+<nav class="navbar">
+<div class="navbar-logo">Mon site</div>
+<div class="navbar-links">
+  <a href="#" class="navbar-link">Accueil</a>
+  <a href="#" class="navbar-link">Articles</a>
+  <a href="#" class="navbar-link">Contact</a>
+</div>
+</nav>
+
+<div class="image-container">
+<img class="image" src="https://thumbs.dreamstime.com/b/bannière-de-déplacement-du-japon-bornes-limites-japonaises-78220471.jpg" alt="Example Image">
+<div class="text-overlay">Exemple de texte</div>
+</div>
+
 <p style="color: green"><%= notice %></p>
 
 <h1>Articles</h1>
 
 <div id="articles">
-  <% @articles.each do |article| %>
-    <%= render article %>
-    <p>
-      <%= link_to "Show this article", article %>
-    </p>
-  <% end %>
+<% @articles.each do |article| %> 
+  <div class="card" style="width: 18rem;">
+  <%= render article %>
+  <p>
+    <%= link_to "Show this article", article %>
+  </p>
+  </div>
+<% end %>
 </div>
 
-<%= link_to "New article", new_article_path %>
+<div class="d-grid gap-2 d-md-block">
+<button class="btn btn-primary" type="button" onclick="redirectToNewArticle()">Créer un article</button>
+</div>
+
+
+
+<script>
+function redirectToNewArticle() {
+  window.location.href = "<%= new_article_path %>";
+}
+</script>
+
+

@@ -71,4 +71,4 @@ group :test do
   gem "webdrivers"
 end
 
-#test
+gem 'bootstrap', '~> 5.2.2'
